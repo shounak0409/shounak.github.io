@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musings | Shounak Chakraborty</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
     <style>
         :root {
             --nus-blue: #003D7C;
@@ -22,7 +23,6 @@
             background-color: var(--bg-light);
         }
 
-        /* Navigation Band */
         nav {
             background-color: var(--nus-blue);
             padding: 0.8rem 0;
@@ -45,7 +45,6 @@
 
         nav a:hover { color: var(--nus-orange); }
 
-        /* Main Section */
         .section { 
             max-width: 900px; 
             margin: 0 auto; 
@@ -54,58 +53,45 @@
 
         .section-header {
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
             margin-bottom: 50px;
+            text-align: center;
         }
 
         .section-header h2 {
-            font-size: 2.2rem;
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
             color: var(--nus-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
             margin: 0;
             display: inline-block;
+            transform: rotate(-2deg);
         }
 
         .section-header::after {
             content: '';
             position: absolute;
-            left: 0;
+            left: 50%;
             bottom: 0;
-            width: 60px;
-            height: 4px;
-            background-color: var(--nus-orange);
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--nus-orange), transparent);
             border-radius: 2px;
         }
 
-        .section-header::before {
-            content: '';
-            position: absolute;
-            top: -15px;
-            left: -5px;
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: rgba(0, 61, 124, 0.00);
-            z-index: -1;
-            letter-spacing: 5px;
-        }
-
-        /* Category Sub-headers */
         h3 {
             color: var(--nus-blue);
             margin-top: 60px;
             margin-bottom: 30px;
             text-transform: uppercase;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-size: 1rem;
+            letter-spacing: 2px;
             border-bottom: 1px solid #eee;
             padding-bottom: 10px;
         }
 
-        /* --- NON-FICTION SECTION (Matches Index Page) --- */
-        .non-fiction-item {
-            margin-bottom: 40px;
-        }
+        /* --- NON-FICTION SECTION --- */
+        .non-fiction-item { margin-bottom: 40px; }
 
         .ribbon {
             background: var(--light-grey);
@@ -117,7 +103,6 @@
             display: inline-block;
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .article-title {
@@ -130,51 +115,80 @@
         }
         .article-title:hover { text-decoration: underline; }
 
-        /* --- CREATIVE WRITING SECTION (New Aesthetic) --- */
+        /* --- CREATIVE CARDS --- */
         .creative-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 25px;
         }
 
         .creative-card {
             background: white;
-            padding: 30px;
+            padding: 40px 15px 25px;
             border: 1px solid #eee;
-            border-radius: 2px;
+            border-radius: 4px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
             text-decoration: none;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            min-height: 140px;
             position: relative;
+            overflow: hidden;
         }
 
         .creative-card:hover {
             border-color: var(--nus-orange);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
         }
 
         .creative-card span {
-            font-family: var(--creative-serif);
-            font-size: 1.25rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.15rem;
             color: #444;
             font-style: italic;
+            z-index: 2;
         }
 
-        .creative-card::before {
-            content: '✒';
+        .card-meta {
             position: absolute;
-            top: 10px;
+            top: 15px;
             right: 15px;
-            color: #ddd;
-            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
+
+        .pen-icon {
+            color: var(--nus-blue); 
+            font-size: 1rem;
+            opacity: 0.3;
+            transform: rotate(-90deg);
+            transition: 0.3s ease;
+            line-height: 1;
+        }
+
+        .genre-label {
+            background: var(--light-grey);
+            color: #777;
+            font-size: 0.6rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 4px 8px;
+            border-radius: 3px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            height: 14px;
+        }
+
+        .creative-card:hover .pen-icon { opacity: 1; transform: rotate(-90deg) translateY(-2px); }
+        .creative-card:hover .genre-label { background: #e2e8f0; color: var(--nus-orange); }
 
         @media (max-width: 768px) {
-            .section-header::before { font-size: 2.5rem; }
+            .section-header h2 { font-size: 2.8rem; }
             .creative-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -193,7 +207,6 @@
         </div>
 
         <h3>Non-fiction Writings</h3>
-        
         <div class="non-fiction-item">
             <div class="ribbon">Article</div>
             <a href="non-fiction/The_Bridge_Between_Finance_and_Climate.pdf" class="article-title">The Bridge Between Finance and Climate</a>
@@ -201,17 +214,28 @@
         </div>
 
         <h3>Creative Writing</h3>
-        
         <div class="creative-grid">
             <a href="Creative/Dewdrops on Leaves.pdf" target="_blank" class="creative-card">
+                <div class="card-meta">
+                    <span class="pen-icon">✒</span>
+                    <div class="genre-label">Short Story</div>
+                </div>
                 <span>Dewdrops on Leaves</span>
             </a>
             
             <a href="Creative/Eulogy for Love.pdf" target="_blank" class="creative-card">
+                <div class="card-meta">
+                    <span class="pen-icon">✒</span>
+                    <div class="genre-label">Poem</div>
+                </div>
                 <span>Eulogy for Love</span>
             </a>
             
             <a href="Creative/Footsteps Inside a Pantheon.pdf" target="_blank" class="creative-card">
+                <div class="card-meta">
+                    <span class="pen-icon">✒</span>
+                    <div class="genre-label">Poem</div>
+                </div>
                 <span>Footsteps Inside a Pantheon</span>
             </a>
         </div>
@@ -219,6 +243,3 @@
 
 </body>
 </html>
-
-
-
